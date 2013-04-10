@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Folder>
+    <name>warehouse_model</name>
+    <visibility>1</visibility>
+    <description><![CDATA[Created with <a href="http://sketchup.google.com/">Google 3D Warehouse 1.0</a>]]></description>
+    <LookAt>
+      <longitude>11.1261246259659</longitude>
+      <latitude>49.1324462022696</latitude>
+      <altitude>27.3331980695954</altitude>
+      <heading>124.568</heading>
+      <tilt>65.5966</tilt>
+      <range>52.9238528623483</range>
+    </LookAt>
+    <Folder>
+      <name>Tour</name>
+      <Placemark>
+        <name>Camera</name>
+        <visibility>1</visibility>
+        <LookAt>
+          <longitude>11.1261246259659</longitude>
+          <latitude>49.1324462022696</latitude>
+          <altitude>27.3331980695954</altitude>
+          <heading>124.568</heading>
+          <tilt>65.5966</tilt>
+          <range>52.9238528623483</range>
+        </LookAt>
+      </Placemark>
+    </Folder>
+    <Placemark>
+      <name>Model</name>
+      <description>Das Heidecker Rathaus wurde von 1479 bis 1481 unter Ludwig IX. von Bayern-Landshut erbaut. Besonders bemerkenswert an dem dominanten Sandsteinbau sind die seltenen Stufengiebel. Die usrprüngliche Funktion des Gebäudes im Spätmittelalter war die Getreidelagerung. Seit 1851 erfüllt es nun die Funktion eines Rathauses. Eine besondere Sehenswürdigkeit ist der aus dem 16. Jhd. stammende Leuchter des Rathaussaales, das sog. Lüsterweibchen. (Quelle: http://de.wikipedia.org/wiki/Heideck, 2007)</description>
+      <Style id="default"/>
+      <Model>
+        <altitudeMode>relativeToGround</altitudeMode>
+        <Location>
+          <longitude>11.126234353964</longitude>
+          <latitude>49.132631205105</latitude>
+          <altitude>0</altitude>
+        </Location>
+        <Orientation>
+          <heading>-0</heading>
+          <tilt>0</tilt>
+          <roll>0</roll>
+        </Orientation>
+        <Scale>
+          <x>1</x>
+          <y>1</y>
+          <z>1</z>
+        </Scale>
+        <Link>
+          <href>models/model.dae</href>
+        </Link>
+      </Model>
+    </Placemark>
+    <DocumentSource>SketchUp</DocumentSource>
+  </Folder>
+</kml>

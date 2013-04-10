@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		title="{data.name}">
+	
+	<fx:Script>
+		<![CDATA[
+			protected function backButton(event:MouseEvent):void
+			{
+				navigator.popView();
+				
+			}
+			
+			protected function foodScan(event:MouseEvent):void
+			{
+				navigator.pushView(TwitterFeed);
+				
+			}
+			
+			protected function quickScan(event:MouseEvent):void
+			{
+				navigator.pushView(QuickScan);
+			}
+			
+			protected function sliderChange(event:Event):void
+			{
+			
+				if (slider.value<=50){
+					floor2.alpha = slider.value/50;
+					floor1.alpha = 1-(slider.value/50);
+					floor3.alpha = 0;
+				}
+				else{
+					floor1.alpha = 0;
+					floor3.alpha = (slider.value-50)/50;
+					floor2.alpha = 1-((slider.value-50)/50);
+				}
+					
+			}
+			
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:actionContent>
+		<s:Button label="Back" click="backButton(event)"/>
+	</s:actionContent>
+	<s:Image x="11" y="10" width="299" height="259" source="assets/level1.jpg" alpha="1" id="floor1"/>
+	<s:Image x="11" y="10" width="299" height="259" source="assets/level2.jpg" alpha="0" id="floor2"/>
+	<s:Image x="11" y="10" width="299" height="259" source="assets/level3.jpg" alpha="0" id="floor3"/>
+	<s:Button x="176" y="340" width="116" height="31" label="Twitter Feed" click="foodScan(event)"/>
+	<s:Button x="26" y="340" width="116" height="31" label="Quick Scan" click="quickScan(event)"/>
+	<s:HSlider x="10" y="276" change="sliderChange(event)" liveDragging="true" maximum="100"
+			   minimum="1" stepSize="1" value="1" id="slider" showDataTip="False"/>
+</s:View>

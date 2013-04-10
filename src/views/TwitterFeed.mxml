@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Twitter Feed"
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		viewActivate="doSearch()">	
+		
+<fx:Script>
+		
+	<![CDATA[
+		
+		import mx.collections.ArrayCollection;
+		import mx.managers.CursorManager;
+		
+		import twitter.api.data.TwitterUser;
+		import twitter.api.Twitter;
+		import twitter.api.events.TwitterEvent;
+		import twitter.api.TwitterSearch;
+		import twitter.api.data.TwitterStatus;
+		
+		[Bindable]
+		private var twitterStatusCollection:ArrayCollection;
+		
+		private function doSearch():void
+		{
+			CursorManager.setBusyCursor();
+			var twit:Twitter = new Twitter();
+			twit.addEventListener( TwitterEvent.ON_USER_TIMELINE_RESULT, userTimelineResult);
+			//twit.loadUserTimeline(tiTwitterUser.text);
+			twit.loadUserTimeline("dreyfuscenter");
+		}
+		
+		private function userTimelineResult(event:TwitterEvent):void
+		{
+			twitterStatusCollection = new ArrayCollection();
+			for each( var status:TwitterStatus in event.data )
+			{
+				twitterStatusCollection.addItem(status);
+			}
+			CursorManager.removeBusyCursor();
+		}
+		
+		protected function backButton(event:MouseEvent):void
+		{
+			navigator.popView();
+		}
+	]]>
+</fx:Script>
+
+
+<fx:Declarations>
+	<!-- Place non-visual elements (e.g., services, value objects) here -->
+</fx:Declarations>
+	<s:actionContent>
+		<s:Button label="Back" click="backButton(event)"/>
+	</s:actionContent>
+		<s:List id="dg" x="10" y="67" width="300" height="226"
+				dataProvider="{twitterStatusCollection}" labelField="text"/>
+		<s:Label x="10" y="14" fontWeight="bold"
+				 text="{twitterStatusCollection.length &gt; 0 ? twitterStatusCollection.getItemAt(0).user.name : ''}"/>
+		<s:Image x="219" y="8" width="48"
+				 source="{twitterStatusCollection.length &gt; 0 ? twitterStatusCollection.getItemAt(0).user.profileImageUrl : ''}"/>
+	
+	<s:TextArea x="11" y="300" width="299" height="105" text="{dg.selectedItem.text}"/>
+	<s:Label x="10" y="50" text="Tweets"/>
+			
+
+</s:View>

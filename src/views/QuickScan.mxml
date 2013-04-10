@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Quick Scan"
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		viewActivate="onPlayerReady()">
+	
+	
+	<fx:Script>
+		
+		<![CDATA[
+			import mx.controls.SWFLoader;
+			private var swfLoader:SWFLoader;
+			
+			private function onPlayerReady():void{
+				
+				swfLoader = new SWFLoader();
+				swfLoader.autoLoad = true;
+				swfLoader.setStyle("backgroundColor", 0x333333);
+				swfLoader.scaleContent=true;
+				swfLoader.maintainAspectRatio = true;
+				addElement(swfLoader);
+				swfLoader.load("../FLAR_FLA/deploy/QuickScan.swf");
+				
+			}
+			
+			
+			protected function backButton(event:MouseEvent):void
+			{
+				swfLoader.unloadAndStop("../FLAR_FLA/deploy/QuickScan.swf");
+				navigator.popView();
+			}
+			
+			
+		]]>
+	</fx:Script>
+	
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:actionContent>
+		<s:Button label="Back" click="backButton(event)"/>
+	</s:actionContent>
+</s:View>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Centers">
+	<fx:Declarations>			
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import spark.events.IndexChangeEvent;
+			
+			protected function homeList_changeHandler(event:IndexChangeEvent):void
+			{
+				navigator.pushView(DUC, event.target.selectedItem);
+			}
+			
+		]]>
+	</fx:Script>
+	
+		<s:List id="homeList" left="0" right="0" top="0" bottom="0" change="homeList_changeHandler(event)">
+			<s:itemRenderer>
+				<fx:Component>
+					<s:ItemRenderer>
+						
+						<s:Rect left="0" right="0" top="25" bottom="25"> 
+						</s:Rect>
+						
+						<s:Label id="centerName" text="{data.name}" paddingLeft="20" paddingTop="18"/>
+					</s:ItemRenderer>
+				</fx:Component>
+			</s:itemRenderer>
+		
+			<s:dataProvider>
+				<s:ArrayList>
+					<fx:Object name="Dreyfus University Center"/>
+					<!--
+					<fx:Object name="Center 2" />
+					<fx:Object name="Center 3" />
+					<fx:Object name="Center 4" />
+					<fx:Object name="Center 5" /> -->
+					
+				</s:ArrayList>
+			</s:dataProvider>
+	</s:List>
+	
+</s:View>
